@@ -42,20 +42,26 @@ export function initDatabase() {
     try {
       const insertUser = db.prepare('INSERT INTO users (id, name, avatar_color) VALUES (?, ?, ?)');
       const defaultUsers = [
-        { id: 1, name: 'Alex', color: '#00f0ff' },
-        { id: 2, name: 'Sam', color: '#10b981' },
-        { id: 3, name: 'Jordan', color: '#f59e0b' },
-        { id: 4, name: 'Taylor', color: '#ec4899' },
+        { id: 1, name: 'Monu', color: '#00f0ff' },
+        { id: 2, name: 'Tamil', color: '#10b981' },
+        { id: 3, name: 'Aashu', color: '#f59e0b' },
+        { id: 4, name: 'Siya', color: '#ec4899' },
       ];
 
       for (const u of defaultUsers) {
         insertUser.run(u.id, u.name, u.color);
       }
       db.exec('COMMIT;');
-      console.log('Seeded initial 4 team members.');
+      console.log('Seeded initial 4 team members: Monu, Tamil, Aashu, Siya.');
     } catch (err) {
       db.exec('ROLLBACK;');
       throw err;
     }
+  } else {
+    // Migrate existing databases from Alex/Sam/Jordan/Taylor to Monu/Tamil/Aashu/Siya
+    db.prepare("UPDATE users SET name = 'Monu' WHERE id = 1 AND name = 'Alex'").run();
+    db.prepare("UPDATE users SET name = 'Tamil' WHERE id = 2 AND name = 'Sam'").run();
+    db.prepare("UPDATE users SET name = 'Aashu' WHERE id = 3 AND name = 'Jordan'").run();
+    db.prepare("UPDATE users SET name = 'Siya' WHERE id = 4 AND name = 'Taylor'").run();
   }
 }
