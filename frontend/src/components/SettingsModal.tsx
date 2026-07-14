@@ -101,16 +101,16 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   gap: '14px',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '14px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div className="settings-member-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '14px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flex: 1, minWidth: '180px' }}>
                     <div
                       className="member-avatar"
-                      style={{ width: '44px', height: '44px', backgroundColor: currentColor }}
+                      style={{ width: '44px', height: '44px', backgroundColor: currentColor, flexShrink: 0 }}
                     >
                       {currentName.substring(0, 2).toUpperCase()}
                     </div>
 
-                    <div>
+                    <div style={{ flex: 1 }}>
                       <label style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-dim)', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>
                         Member #{member.userId} Name
                       </label>
@@ -127,7 +127,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                           fontWeight: '700',
                           fontSize: '15px',
                           outline: 'none',
-                          width: '200px',
+                          width: '100%',
+                          maxWidth: '240px',
                         }}
                       />
                     </div>
