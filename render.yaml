@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: dsa-a2z-team-tracker
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 24.0.0
+      - key: PORT
+        value: 5000
+    disk:
+      name: tracker-db-data
+      mountPath: /opt/render/project/src/backend/data
+      sizeGB: 1

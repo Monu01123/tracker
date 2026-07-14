@@ -1,0 +1,14 @@
+{
+  "name": "dsa-a2z-team-tracker",
+  "version": "1.0.0",
+  "description": "Striver A2Z DSA Sheet — 4-Person Team Competition & Gamified Progress Tracker",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install --prefix frontend && npm install --prefix backend",
+    "build": "npm run build --prefix frontend && npm run build --prefix backend",
+    "start": "npm start --prefix backend"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}
