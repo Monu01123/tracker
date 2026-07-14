@@ -10,7 +10,10 @@ services:
         value: 24.0.0
       - key: PORT
         value: 5000
-    disk:
-      name: tracker-db-data
-      mountPath: /opt/render/project/src/backend/data
-      sizeGB: 1
+    # Note: On Render's 100% Free Tier, files stored on disk reset when the instance restarts after inactivity.
+    # To enable permanent disk storage so SQLite data persists across restarts, upgrade to Render's Starter Plan ($7/mo)
+    # and uncomment the disk section below:
+    # disk:
+    #   name: tracker-db-data
+    #   mountPath: /opt/render/project/src/backend/data
+    #   sizeGB: 1
